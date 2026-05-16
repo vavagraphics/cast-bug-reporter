@@ -63,7 +63,10 @@ export default function BugForm() {
       const res = await fetch('/api/bugs', { method: 'POST', body: fd });
       const data = await res.json();
       if (!res.ok || !data.success) throw new Error(data.error || 'Submission failed');
-      setSuccess(`Bug report ${data.bugId} submitted successfully.`);
+      const msg = data.screenshotFailed
+        ? `Bug report ${data.bugId} submitted, but the screenshot could not be attached. Try a smaller image (under 5 MB) or attach it manually.`
+        : `Bug report ${data.bugId} submitted successfully.`;
+      setSuccess(msg);
       setForm(initial); setFile(null); setPreview(null);
       const fileInput = document.getElementById('screenshot-input');
       if (fileInput) fileInput.value = '';
