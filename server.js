@@ -113,13 +113,21 @@ async function uploadScreenshot(recordId, file) {
  * never blocks the user-facing submission. Uses <!channel> per the
  * Railway silent-notification gotcha.
  */
-async function notifySlack({ bugId, submittedBy, page, pageOther, component, componentOther, description, screenshotUrl }) {
+async function notifySlack({ bugId, submittedBy, requestType, page, pageOther, component, componentOther, description, screenshotUrl }) {
   if (!SLACK_BOT_TOKEN || !SLACK_NOTIFY_CHANNEL) return;
   try {
-    const pageText = page + (pageOther ? ` (${pageOther})` : '');
-    const componentText = component + (componentOther ? ` (${componentOther})` : '');
-    const screenshotLine = screenshotUrl ? `\n*Screenshot:* ${screenshotUrl}` : '';
-    const text = `<!channel> :bug: New CAST bug ${bugId} from ${submittedBy}\n*Page:* ${pageText}\n*Component:* ${componentText}\n*Description:* ${description}${screenshotLine}`;
+    const isFeature = requestType === 'Feature';
+    const emoji = isFeature ? ':sparkles:' : ':bug:';
+    const label = isFeature ? 'Feature request' : 'New CAST bug';
+    let text;
+    if (isFeature) {
+      text = `<!channel> ${emoji} ${label} ${bugId} from ${submittedBy}\n*Description:* ${description}`;
+    } else {
+      const pageText = page + (pageOther ? ` (${pageOther})` : '');
+      const componentText = component + (componentOther ? ` (${componentOther})` : '');
+      const screenshotLine = screenshotUrl ? `\n*Screenshot:* ${screenshotUrl}` : '';
+      text = `<!channel> ${emoji} ${label} ${bugId} from ${submittedBy}\n*Page:* ${pageText}\n*Component:* ${componentText}\n*Description:* ${description}${screenshotLine}`;
+    }
     const r = await fetch('https://slack.com/api/chat.postMessage', {
       method: 'POST',
       headers: {
@@ -141,22 +149,37 @@ async function notifySlack({ bugId, submittedBy, page, pageOther, component, com
 
 app.post('/api/bugs', upload.single('screenshot'), async (req, res) => {
   try {
-    const { submittedBy, page, pageOther, component, componentOther, description } = req.body;
-    if (!submittedBy || !page || !component || !description) {
+    const { submittedBy, page, pageOther, component, componentOther, description, requestType } = req.body;
+
+    // Normalize request type — default to Bug for backward compat
+    const normalizedType = requestType === 'Feature' ? 'Feature' : 'Bug';
+    const isFeature = normalizedType === 'Feature';
+
+    // For bugs: page, component, and description all required
+    // For features: only submittedBy and description are required
+    if (!submittedBy || !description) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
+    if (!isFeature && (!page || !component)) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+
     const bugId = await nextBugId();
     const fields = {
       'Bug ID': bugId,
       'Submitted By': submittedBy,
-      'Page': page,
-      'Component': component,
       'Description': description,
       'Status': 'New',
+      'Type': normalizedType,
       'Submitted At': new Date().toISOString()
     };
-    if (page === 'Other' && pageOther) fields['Page (Other)'] = pageOther;
-    if (component === 'Other' && componentOther) fields['Component (Other)'] = componentOther;
+
+    if (!isFeature) {
+      fields['Page'] = page;
+      fields['Component'] = component;
+      if (page === 'Other' && pageOther) fields['Page (Other)'] = pageOther;
+      if (component === 'Other' && componentOther) fields['Component (Other)'] = componentOther;
+    }
 
     // Step 1: create the record (without the screenshot — that requires a record ID first)
     const createRes = await fetch(AT_URL, {
@@ -184,10 +207,10 @@ app.post('/api/bugs', upload.single('screenshot'), async (req, res) => {
     }
 
     // Step 3: Slack notification (fire-and-forget, never blocks).
-    notifySlack({ bugId, submittedBy, page, pageOther, component, componentOther, description, screenshotUrl })
+    notifySlack({ bugId, submittedBy, requestType: normalizedType, page, pageOther, component, componentOther, description, screenshotUrl })
       .catch((err) => console.error('[slack] outer exception:', err.message));
 
-    res.json({ success: true, bugId, screenshotFailed });
+    res.json({ success: true, bugId, screenshotFailed, requestType: normalizedType });
   } catch (e) {
     // Multer file-size errors land here
     if (e?.code === 'LIMIT_FILE_SIZE') {

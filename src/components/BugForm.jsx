@@ -24,8 +24,14 @@ const COMPONENTS = [
 
 const initial = {
   submittedBy: '', page: '', pageOther: '',
-  component: '', componentOther: '', description: ''
+  component: '', componentOther: '', description: '',
+  requestType: 'Bug'
 };
+
+const BUG_DESCRIPTION_PLACEHOLDER =
+  'Please describe the bug or issue in detail. Include what you expected to happen vs. what actually happened.';
+const FEATURE_DESCRIPTION_PLACEHOLDER =
+  'Describe the feature you would like to see. Include how it would help and any relevant context.';
 
 export default function BugForm() {
   const [form, setForm] = useState(initial);
@@ -36,6 +42,7 @@ export default function BugForm() {
   const [error, setError] = useState('');
 
   const update = (k, v) => setForm(f => ({ ...f, [k]: v }));
+  const isFeature = form.requestType === 'Feature';
 
   const onFile = (e) => {
     const f = e.target.files?.[0];
@@ -49,10 +56,22 @@ export default function BugForm() {
     }
   };
 
+  const onTypeChange = (type) => {
+    update('requestType', type);
+    // Clear page/component values when switching to Feature so they
+    // don't get sent as hidden stale data
+    if (type === 'Feature') {
+      setForm(f => ({ ...f, requestType: 'Feature', page: '', pageOther: '', component: '', componentOther: '' }));
+    }
+  };
+
   const submit = async (e) => {
     e.preventDefault();
     setError(''); setSuccess('');
-    if (!form.submittedBy || !form.page || !form.component || !form.description) {
+    if (!form.submittedBy || !form.description) {
+      setError('Please fill all required fields.'); return;
+    }
+    if (!isFeature && (!form.page || !form.component)) {
       setError('Please fill all required fields.'); return;
     }
     setSubmitting(true);
@@ -63,9 +82,10 @@ export default function BugForm() {
       const res = await fetch('/api/bugs', { method: 'POST', body: fd });
       const data = await res.json();
       if (!res.ok || !data.success) throw new Error(data.error || 'Submission failed');
+      const label = data.requestType === 'Feature' ? 'Feature request' : 'Bug report';
       const msg = data.screenshotFailed
-        ? `Bug report ${data.bugId} submitted, but the screenshot could not be attached. Try a smaller image (under 5 MB) or attach it manually.`
-        : `Bug report ${data.bugId} submitted successfully.`;
+        ? `${label} ${data.bugId} submitted, but the screenshot could not be attached. Try a smaller image (under 5 MB) or attach it manually.`
+        : `${label} ${data.bugId} submitted successfully.`;
       setSuccess(msg);
       setForm(initial); setFile(null); setPreview(null);
       const fileInput = document.getElementById('screenshot-input');
@@ -82,58 +102,91 @@ export default function BugForm() {
       {success && <div className="banner success">{success}</div>}
       {error && <div className="banner error">{error}</div>}
       <form onSubmit={submit}>
+
+        <div className="field">
+          <label>Request Type <span className="required">*</span></label>
+          <div className="radio-group">
+            <label className="radio-label">
+              <input
+                type="radio"
+                name="requestType"
+                value="Bug"
+                checked={form.requestType === 'Bug'}
+                onChange={() => onTypeChange('Bug')}
+              />
+              Bug or Site Issue
+            </label>
+            <label className="radio-label">
+              <input
+                type="radio"
+                name="requestType"
+                value="Feature"
+                checked={form.requestType === 'Feature'}
+                onChange={() => onTypeChange('Feature')}
+              />
+              Feature Request
+            </label>
+          </div>
+        </div>
+
         <div className="field">
           <label>Your Name <span className="required">*</span></label>
           <input type="text" placeholder="Your name" value={form.submittedBy}
             onChange={e => update('submittedBy', e.target.value)} required />
         </div>
 
-        <div className="field">
-          <label>Page <span className="required">*</span></label>
-          <select value={form.page} onChange={e => update('page', e.target.value)} required>
-            <option value="">Select a page…</option>
-            {PAGES.map(p => <option key={p} value={p}>{p}</option>)}
-          </select>
-        </div>
-        {form.page === 'Other' && (
-          <div className="field">
-            <label>Please specify the page</label>
-            <input type="text" value={form.pageOther}
-              onChange={e => update('pageOther', e.target.value)} />
-          </div>
-        )}
+        {!isFeature && (
+          <>
+            <div className="field">
+              <label>Page <span className="required">*</span></label>
+              <select value={form.page} onChange={e => update('page', e.target.value)} required>
+                <option value="">Select a page…</option>
+                {PAGES.map(p => <option key={p} value={p}>{p}</option>)}
+              </select>
+            </div>
+            {form.page === 'Other' && (
+              <div className="field">
+                <label>Please specify the page</label>
+                <input type="text" value={form.pageOther}
+                  onChange={e => update('pageOther', e.target.value)} />
+              </div>
+            )}
 
-        <div className="field">
-          <label>Component <span className="required">*</span></label>
-          <select value={form.component} onChange={e => update('component', e.target.value)} required>
-            <option value="">Select a component…</option>
-            {COMPONENTS.map(c => <option key={c} value={c}>{c}</option>)}
-          </select>
-        </div>
-        {form.component === 'Other' && (
-          <div className="field">
-            <label>Please specify the component</label>
-            <input type="text" value={form.componentOther}
-              onChange={e => update('componentOther', e.target.value)} />
-          </div>
+            <div className="field">
+              <label>Component <span className="required">*</span></label>
+              <select value={form.component} onChange={e => update('component', e.target.value)} required>
+                <option value="">Select a component…</option>
+                {COMPONENTS.map(c => <option key={c} value={c}>{c}</option>)}
+              </select>
+            </div>
+            {form.component === 'Other' && (
+              <div className="field">
+                <label>Please specify the component</label>
+                <input type="text" value={form.componentOther}
+                  onChange={e => update('componentOther', e.target.value)} />
+              </div>
+            )}
+          </>
         )}
 
         <div className="field">
           <label>Description <span className="required">*</span></label>
           <textarea rows={5}
-            placeholder="Please describe the bug or issue in detail. Include what you expected to happen vs. what actually happened."
+            placeholder={isFeature ? FEATURE_DESCRIPTION_PLACEHOLDER : BUG_DESCRIPTION_PLACEHOLDER}
             value={form.description}
             onChange={e => update('description', e.target.value)} required />
         </div>
 
-        <div className="field">
-          <label>Attach a screenshot (optional)</label>
-          <input id="screenshot-input" type="file" accept="image/*" onChange={onFile} />
-          {preview && <img src={preview} alt="preview" className="preview-img" />}
-        </div>
+        {!isFeature && (
+          <div className="field">
+            <label>Attach a screenshot (optional)</label>
+            <input id="screenshot-input" type="file" accept="image/*" onChange={onFile} />
+            {preview && <img src={preview} alt="preview" className="preview-img" />}
+          </div>
+        )}
 
         <button className="btn" type="submit" disabled={submitting}>
-          {submitting ? 'Submitting…' : 'Submit Bug Report'}
+          {submitting ? 'Submitting…' : isFeature ? 'Submit Feature Request' : 'Submit Bug Report'}
         </button>
       </form>
     </div>

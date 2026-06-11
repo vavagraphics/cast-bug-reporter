@@ -14,7 +14,10 @@ const fmtDate = (iso) => {
   return d.toLocaleString();
 };
 
-export default function StatusBoard() {
+// typeFilter: 'bug' | 'feature'
+// bug board = Type=Bug OR Type blank (backward compat with pre-Type records)
+// feature board = Type=Feature only
+export default function StatusBoard({ typeFilter = 'bug' }) {
   const [records, setRecords] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -36,55 +39,80 @@ export default function StatusBoard() {
 
   useEffect(() => { load(); }, []);
 
+  const filtered = records.filter(r => {
+    const t = r.fields?.['Type'];
+    if (typeFilter === 'feature') return t === 'Feature';
+    // bug: show records with Type=Bug OR no Type set (backward compat)
+    return !t || t === 'Bug';
+  });
+
+  const title = typeFilter === 'feature' ? 'Feature Status Board' : 'Bug Status Board';
+  const emptyMsg = typeFilter === 'feature'
+    ? 'No feature requests submitted yet.'
+    : 'No bug reports submitted yet.';
+
+  const isFeatureBoard = typeFilter === 'feature';
+
   return (
     <div className="board-container">
       <div className="toolbar">
-        <h2>Bug Status Board</h2>
+        <h2>{title}</h2>
         <button className="btn btn-secondary" onClick={load} disabled={loading}>
           {loading ? 'Loading…' : 'Refresh'}
         </button>
       </div>
       {error && <div className="banner error">{error}</div>}
-      {!loading && records.length === 0 && (
-        <div className="empty">No bug reports submitted yet.</div>
+      {!loading && filtered.length === 0 && (
+        <div className="empty">{emptyMsg}</div>
       )}
-      {records.length > 0 && (
+      {filtered.length > 0 && (
         <table className="bugs">
           <thead>
             <tr>
-              <th>Bug ID</th>
+              <th>ID</th>
               <th>Submitted By</th>
-              <th>Page</th>
-              <th>Component</th>
+              {!isFeatureBoard && <th>Page</th>}
+              {!isFeatureBoard && <th>Component</th>}
               <th>Status</th>
               <th>Submitted At</th>
             </tr>
           </thead>
           <tbody>
-            {records.map(r => {
+            {filtered.map(r => {
               const f = r.fields || {};
               const isOpen = expanded === r.id;
               const pageDisplay = f['Page'] === 'Other' && f['Page (Other)']
                 ? `Other: ${f['Page (Other)']}` : (f['Page'] || '');
               const compDisplay = f['Component'] === 'Other' && f['Component (Other)']
                 ? `Other: ${f['Component (Other)']}` : (f['Component'] || '');
+              const colSpan = isFeatureBoard ? 4 : 6;
               return (
                 <>
                   <tr key={r.id} className="row" onClick={() => setExpanded(isOpen ? null : r.id)}>
                     <td><strong>{f['Bug ID'] || ''}</strong></td>
                     <td>{f['Submitted By'] || ''}</td>
-                    <td>{pageDisplay}</td>
-                    <td>{compDisplay}</td>
+                    {!isFeatureBoard && <td>{pageDisplay}</td>}
+                    {!isFeatureBoard && <td>{compDisplay}</td>}
                     <td><span className={badgeClass(f['Status'])}>{f['Status'] || ''}</span></td>
                     <td>{fmtDate(f['Submitted At'])}</td>
                   </tr>
                   {isOpen && (
                     <tr key={r.id + '-x'}>
-                      <td colSpan={6} className="expand-cell">
+                      <td colSpan={colSpan} className="expand-cell">
                         <h4>Description</h4>
                         <p>{f['Description'] || '—'}</p>
-                        <h4>Proposed Fix</h4>
-                        <p>{f['Proposed Fix'] || '—'}</p>
+                        {!isFeatureBoard && (
+                          <>
+                            <h4>Proposed Fix</h4>
+                            <p>{f['Proposed Fix'] || '—'}</p>
+                          </>
+                        )}
+                        {isFeatureBoard && f['Proposed Fix'] && (
+                          <>
+                            <h4>Notes</h4>
+                            <p>{f['Proposed Fix']}</p>
+                          </>
+                        )}
                         {Array.isArray(f['Screenshot']) && f['Screenshot'].length > 0 && (
                           <>
                             <h4>Screenshot</h4>

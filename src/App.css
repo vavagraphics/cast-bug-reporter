@@ -102,3 +102,26 @@ table.bugs tr.row:hover { background: #f5f9fc; }
 .toolbar h2 { margin: 0; color: #0D1620; }
 
 .empty { padding: 40px; text-align: center; color: #6b7785; }
+
+/* Request Type radio buttons */
+.radio-group {
+  display: flex;
+  gap: 24px;
+  padding: 4px 0;
+}
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0D1620;
+  cursor: pointer;
+}
+.radio-label input[type=radio] {
+  width: 16px;
+  height: 16px;
+  accent-color: #007CB0;
+  cursor: pointer;
+  margin: 0;
+}

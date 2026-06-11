@@ -16,13 +16,19 @@ export default function App() {
         <button
           className={`tab ${tab === 'submit' ? 'active' : ''}`}
           onClick={() => setTab('submit')}
-        >Submit a Bug</button>
+        >Submit a Report</button>
         <button
           className={`tab ${tab === 'board' ? 'active' : ''}`}
           onClick={() => setTab('board')}
         >Bug Status Board</button>
+        <button
+          className={`tab ${tab === 'features' ? 'active' : ''}`}
+          onClick={() => setTab('features')}
+        >Feature Status Board</button>
       </nav>
-      {tab === 'submit' ? <BugForm /> : <StatusBoard />}
+      {tab === 'submit' && <BugForm />}
+      {tab === 'board' && <StatusBoard typeFilter="bug" />}
+      {tab === 'features' && <StatusBoard typeFilter="feature" />}
     </div>
   );
 }
