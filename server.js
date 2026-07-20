@@ -155,9 +155,19 @@ function loadManifestFromDisk() {
 // Prefer the in-memory refresh cache if present — that means someone hit the
 // Refresh Components button since the process started and we should keep
 // serving that fresher view until they hit it again or the service restarts.
+//
+// IMPORTANT: return a deep copy. The GET handler mutates `c.status` and
+// `c.openBugs` on the returned components (overlay logic). If we handed
+// back the cache object by reference, those mutations would poison the
+// cache — a component flipped to "Bug" during one GET would stay "Bug"
+// on the next even after the Airtable record is Resolved. Cache stores
+// the RAW scan result; overlay happens per-request against fresh bugs.
 function loadManifest() {
-  if (refreshCache) return refreshCache;
-  return loadManifestFromDisk();
+  const src = refreshCache || loadManifestFromDisk();
+  return {
+    ...src,
+    components: (src.components || []).map((c) => ({ ...c, openBugs: undefined })),
+  };
 }
 
 app.get('/api/components', async (_req, res) => {
@@ -242,7 +252,9 @@ app.post('/api/components/refresh', async (_req, res) => {
 
     // Overlay Airtable bugs onto the fresh manifest exactly like GET does,
     // so the UI sees "Bug" statuses without a second round-trip.
-    const components = [...freshManifest.components];
+    // Deep copy so the overlay's mutations don't poison the cache — see the
+    // note on loadManifest() above for why.
+    const components = freshManifest.components.map((c) => ({ ...c, openBugs: undefined }));
     let openBugsByComponent = new Map();
     try {
       const records = await fetchAllRecords();

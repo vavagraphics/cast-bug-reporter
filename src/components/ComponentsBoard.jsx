@@ -94,10 +94,10 @@ export default function ComponentsBoard() {
       const bugCount = data.counts?.Bug || 0;
       showToast(
         'success',
-        `Refreshed ${total} components${bugCount ? ` — ${bugCount} Bug` : ''}`
+        `Refreshed ${total} components${bugCount ? ` (${bugCount} Bug)` : ''}`
       );
     } catch (e) {
-      showToast('error', 'Refresh failed — showing last cached data');
+      showToast('error', 'Refresh failed. Showing last cached data.');
     } finally {
       setRefreshing(false);
     }
