@@ -1,0 +1,742 @@
+{
+  "generatedAt": "2026-07-20T17:42:08.085Z",
+  "castRepo": "CAST-Lighting/cast-website",
+  "totalRegistrations": 73,
+  "counts": {
+    "Live": 57,
+    "Deprecated": 13,
+    "Hidden": 3
+  },
+  "components": [
+    {
+      "makeswiftLabel": "⚙ Account / My Favorites",
+      "componentName": "FavoritesGrid",
+      "type": "cast-favorites-grid",
+      "registerFile": "core/lib/makeswift/components/cast/FavoritesGrid.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/FavoritesGrid.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "⚙ Account / Order Details",
+      "componentName": "OrderDetail",
+      "type": "cast-order-detail",
+      "registerFile": "core/lib/makeswift/components/cast/OrderDetail.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/OrderDetail.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "⚙ Account / Order History",
+      "componentName": "OrdersGrid",
+      "type": "cast-orders-grid",
+      "registerFile": "core/lib/makeswift/components/cast/OrdersGrid.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/OrdersGrid.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "⚙ Account / Quote Details",
+      "componentName": "QuoteDetail",
+      "type": "cast-quote-detail",
+      "registerFile": "core/lib/makeswift/components/cast/QuoteDetail.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/QuoteDetail.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "⚙ Account / Quotes List",
+      "componentName": "QuotesList",
+      "type": "cast-quotes-list",
+      "registerFile": "core/lib/makeswift/components/cast/QuotesList.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/QuotesList.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "⚙ System / Blog Post Content",
+      "componentName": "CmsBlogBody",
+      "type": "cast-cms-blog-body",
+      "registerFile": "core/lib/makeswift/components/cast/CmsBlogBody.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/CmsBlogBody.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "⚙ System / Blog Post Header",
+      "componentName": "CmsSubPageHero",
+      "type": "cast-cms-hero-blog",
+      "registerFile": "core/lib/makeswift/components/cast/CmsSubPageHero.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/CmsSubPageHero.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "⚙ System / Category Header",
+      "componentName": "CmsSubPageHero",
+      "type": "cast-cms-hero-category",
+      "registerFile": "core/lib/makeswift/components/cast/CmsSubPageHero.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/CmsSubPageHero.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "⚙ System / Category Products",
+      "componentName": "CmsCategoryGrid",
+      "type": "cast-cms-category-grid",
+      "registerFile": "core/lib/makeswift/components/cast/CmsCategoryGrid.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/CmsCategoryGrid.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "⚙ System / Product Description",
+      "componentName": "ProductDescription",
+      "type": "site-product-description",
+      "registerFile": "core/lib/makeswift/components/cast/ProductDescription.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/ProductDescription.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "⚙ System / Product Documents",
+      "componentName": "ProductDocuments",
+      "type": "site-product-documents",
+      "registerFile": "core/lib/makeswift/components/cast/ProductDocuments.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/ProductDocuments.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "⚙ System / Product FAQ",
+      "componentName": "ProductFAQ",
+      "type": "site-product-faq",
+      "registerFile": "core/lib/makeswift/components/cast/ProductFAQ.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/ProductFAQ.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "⚙ System / Product Header",
+      "componentName": "CmsSubPageHero",
+      "type": "cast-cms-hero-product",
+      "registerFile": "core/lib/makeswift/components/cast/CmsSubPageHero.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/CmsSubPageHero.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "⚙ System / Product Info",
+      "componentName": "CmsProductContent",
+      "type": "cast-cms-product-content",
+      "registerFile": "core/lib/makeswift/components/cast/CmsProductContent.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/CmsProductContent.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "⚙ System / Search Results Grid",
+      "componentName": "SearchResults",
+      "type": "cast-search-results",
+      "registerFile": "core/lib/makeswift/components/cast/SearchResults.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/SearchResults.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "⚙ System / Search Results Header",
+      "componentName": "CmsSubPageHero",
+      "type": "cast-cms-hero-search",
+      "registerFile": "core/lib/makeswift/components/cast/CmsSubPageHero.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/CmsSubPageHero.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "🏠 Hero / Full-Width Hero",
+      "componentName": "HeroBanner",
+      "type": "site-hero-banner",
+      "registerFile": "core/lib/makeswift/components/cast/HeroBanner.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/HeroBanner.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "🏠 Hero / Product Page Hero",
+      "componentName": "ProductHero",
+      "type": "site-product-hero",
+      "registerFile": "core/lib/makeswift/components/cast/ProductHero.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/ProductHero.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📄 Content / Article Grid",
+      "componentName": "BlogGrid",
+      "type": "cast-blog-grid",
+      "registerFile": "core/lib/makeswift/components/cast/BlogGrid.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/BlogGrid.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📄 Content / Certifications & Patents",
+      "componentName": "PatentsList",
+      "type": "cast-patents-list",
+      "registerFile": "core/lib/makeswift/components/cast/PatentsList.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/PatentsList.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📄 Content / Company Story Section",
+      "componentName": "AboutContent",
+      "type": "cast-about-content",
+      "registerFile": "core/lib/makeswift/components/cast/AboutContent.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/AboutContent.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📄 Content / Documents & Downloads",
+      "componentName": "DocumentsDownloads",
+      "type": "cast-documents-downloads",
+      "registerFile": "core/lib/makeswift/components/cast/DocumentsDownloads.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/DocumentsDownloads.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📄 Content / Image & Video Gallery",
+      "componentName": "MediaGallery",
+      "type": "site-media-gallery",
+      "registerFile": "core/lib/makeswift/components/cast/MediaGallery.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/MediaGallery.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📄 Content / Logo Bar",
+      "componentName": "BrandLogos",
+      "type": "site-brand-logos",
+      "registerFile": "core/lib/makeswift/components/cast/BrandLogos.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/BrandLogos.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📄 Content / Side-by-Side Comparison",
+      "componentName": "ComparisonSection",
+      "type": "site-comparison",
+      "registerFile": "core/lib/makeswift/components/cast/ComparisonSection.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/ComparisonSection.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📄 Content / Testimonials Carousel",
+      "componentName": "ReviewsCarousel",
+      "type": "site-reviews-carousel",
+      "registerFile": "core/lib/makeswift/components/cast/ReviewsCarousel.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/ReviewsCarousel.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📄 Content / Text + Media Block",
+      "componentName": "ContentMedia",
+      "type": "site-content-media",
+      "registerFile": "core/lib/makeswift/components/cast/ContentMedia.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/ContentMedia.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📄 Content / Text Block",
+      "componentName": "RichTextSection",
+      "type": "cast-rich-text",
+      "registerFile": "core/lib/makeswift/components/cast/RichTextSection.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/RichTextSection.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📅 Events / Event Detail Body",
+      "componentName": "EventDetailBody",
+      "type": "cast-event-detail-body",
+      "registerFile": "core/lib/makeswift/components/cast/EventDetailBody.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/EventDetailBody.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📅 Events / Event Location Map",
+      "componentName": "EventLocationMap",
+      "type": "cast-event-location-map",
+      "registerFile": "core/lib/makeswift/components/cast/EventLocationMap.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/EventLocationMap.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📅 Events / Events Grid",
+      "componentName": "EventsGrid",
+      "type": "cast-events-grid",
+      "registerFile": "core/lib/makeswift/components/cast/EventsGrid.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/EventsGrid.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📅 Events / Next Up Event Card",
+      "componentName": "EventCardBlock",
+      "type": "cast-next-up-event-card",
+      "registerFile": "core/lib/makeswift/components/cast/EventCardBlock.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/EventCardBlock.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📅 Events / Upcoming Event Box",
+      "componentName": "UpcomingEventBox",
+      "type": "cast-upcoming-event-box",
+      "registerFile": "core/lib/makeswift/components/cast/UpcomingEventBox.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/UpcomingEventBox.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📝 Forms / Contact Section",
+      "componentName": "ContactSection",
+      "type": "cast-contact-section",
+      "registerFile": "core/lib/makeswift/components/cast/ContactSection.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/ContactSection.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📝 Forms / Contractor Finder",
+      "componentName": "ContractorFinder",
+      "type": "site-contractor-finder",
+      "registerFile": "core/lib/makeswift/components/cast/ContractorFinder.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/ContractorFinder.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📝 Forms / Distributor Finder",
+      "componentName": "DistributorFinder",
+      "type": "site-distributor-finder",
+      "registerFile": "core/lib/makeswift/components/cast/DistributorFinder.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/DistributorFinder.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📝 Forms / General Contact Form",
+      "componentName": "GeneralContactForm",
+      "type": "site-general-contact-form",
+      "registerFile": "core/lib/makeswift/components/cast/GeneralContactForm.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/GeneralContactForm.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📝 Forms / Login & Sign Up",
+      "componentName": "LoginSection",
+      "type": "cast-login-section",
+      "registerFile": "core/lib/makeswift/components/cast/LoginSection.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/LoginSection.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📝 Forms / Retail Account Application",
+      "componentName": "RetailSignup",
+      "type": "cast-retail-signup",
+      "registerFile": "core/lib/makeswift/components/cast/RetailSignup.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/RetailSignup.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📝 Forms / TradePro Signup",
+      "componentName": "TradeProSignup",
+      "type": "cast-tradepro-signup",
+      "registerFile": "core/lib/makeswift/components/cast/TradeProSignup.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/TradeProSignup.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📣 CTA / Action Banner",
+      "componentName": "ReadyCTA",
+      "type": "site-ready-cta",
+      "registerFile": "core/lib/makeswift/components/cast/ReadyCTA.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/ReadyCTA.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📣 CTA / Email Signup — Compact",
+      "componentName": "NewsletterFormSmall",
+      "type": "cast-newsletter-form-small",
+      "registerFile": "core/lib/makeswift/components/cast/NewsletterFormSmall.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/NewsletterFormSmall.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📣 CTA / Email Signup — Full Section",
+      "componentName": "NewsletterCtaFull",
+      "type": "site-newsletter-cta-full",
+      "registerFile": "core/lib/makeswift/components/cast/NewsletterCtaFull.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/NewsletterCtaFull.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "📣 CTA / Email Signup Bar",
+      "componentName": "NewsletterCta",
+      "type": "site-newsletter",
+      "registerFile": "core/lib/makeswift/components/cast/NewsletterCta.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/NewsletterCta.tsx",
+      "hidden": false,
+      "isImported": false,
+      "status": "Deprecated"
+    },
+    {
+      "makeswiftLabel": "📣 CTA / TradePro Benefits",
+      "componentName": "TradeProSection",
+      "type": "site-trade-pro",
+      "registerFile": "core/lib/makeswift/components/cast/TradeProSection.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/TradeProSection.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "🔧 Utilities / 404 Banner",
+      "componentName": "NotFoundHero",
+      "type": "cast-not-found-hero",
+      "registerFile": "core/lib/makeswift/components/cast/NotFoundHero.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/NotFoundHero.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "🔧 Utilities / GDPR Cookie Popup",
+      "componentName": "GDPRPopup",
+      "type": "cast-gdpr-popup",
+      "registerFile": "core/lib/makeswift/components/cast/GDPRPopup.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/GDPRPopup.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "🔧 Utilities / Global Theme",
+      "componentName": "CastSiteTheme",
+      "type": "cast-site-theme",
+      "registerFile": "core/lib/makeswift/components/cast/CastSiteTheme.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/CastSiteTheme.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "🔧 Utilities / Style Guide",
+      "componentName": "StyleGuide",
+      "type": "cast-style-guide",
+      "registerFile": "core/lib/makeswift/components/cast/StyleGuide.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/StyleGuide.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "🧭 Navigation / Footer",
+      "componentName": "SiteFooter",
+      "type": "site-footer",
+      "registerFile": "core/lib/makeswift/components/cast/SiteFooter.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/SiteFooter.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "🧭 Navigation / Info Bar",
+      "componentName": "NavigationTopper",
+      "type": "cast-navigation-topper",
+      "registerFile": "core/lib/makeswift/components/cast/NavigationTopper.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/NavigationTopper.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "🧭 Navigation / Main Navigation",
+      "componentName": "SiteNavbar",
+      "type": "site-navbar",
+      "registerFile": "core/lib/makeswift/components/cast/SiteNavbar.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/SiteNavbar.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "🧮 Tools / Lighting Calculator",
+      "componentName": "LightingCalculator",
+      "type": "cast-lighting-calculator",
+      "registerFile": "core/lib/makeswift/components/cast/LightingCalculator.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/LightingCalculator.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "🛒 Shop / Bundle Builder",
+      "componentName": "BundleProducts",
+      "type": "site-bundle-products",
+      "registerFile": "core/lib/makeswift/components/cast/BundleProducts.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/BundleProducts.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "🛒 Shop / Category Grid",
+      "componentName": "CategoryGrid",
+      "type": "site-category-grid",
+      "registerFile": "core/lib/makeswift/components/cast/CategoryGrid.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/CategoryGrid.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "🛒 Shop / Parts & Accessories Grid",
+      "componentName": "PartsGrid",
+      "type": "site-parts-grid",
+      "registerFile": "core/lib/makeswift/components/cast/PartsGrid.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/PartsGrid.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "🛒 Shop / Product Carousel",
+      "componentName": "ProductGallery",
+      "type": "site-product-gallery",
+      "registerFile": "core/lib/makeswift/components/cast/ProductGallery.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/ProductGallery.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "🛒 Shop / Product Grid",
+      "componentName": "ShopGrid",
+      "type": "site-shop-grid",
+      "registerFile": "core/lib/makeswift/components/cast/ShopGrid.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/ShopGrid.tsx",
+      "hidden": false,
+      "isImported": true,
+      "status": "Live"
+    },
+    {
+      "makeswiftLabel": "Button",
+      "componentName": "MSButtonLink",
+      "type": "Makeswift:Button",
+      "registerFile": "core/lib/makeswift/components/button-link/register.ts",
+      "componentFile": "core/lib/makeswift/components/button-link/client.tsx",
+      "hidden": false,
+      "isImported": false,
+      "status": "Deprecated"
+    },
+    {
+      "makeswiftLabel": "CAST Logo Carousel",
+      "componentName": "LogoCarouselMakeswift",
+      "type": "cast-logo-carousel",
+      "registerFile": "core/lib/makeswift/components/logo-carousel/register.tsx",
+      "componentFile": "",
+      "hidden": false,
+      "isImported": false,
+      "status": "Deprecated"
+    },
+    {
+      "makeswiftLabel": "CAST Scrolling Cards",
+      "componentName": "ScrollingCardsMakeswift",
+      "type": "cast-scrolling-cards",
+      "registerFile": "core/lib/makeswift/components/scrolling-cards/register.tsx",
+      "componentFile": "",
+      "hidden": false,
+      "isImported": false,
+      "status": "Deprecated"
+    },
+    {
+      "makeswiftLabel": "Hero / About Hero",
+      "componentName": "AboutHero",
+      "type": "cast-about-hero",
+      "registerFile": "core/lib/makeswift/components/cast/AboutHero.register.ts",
+      "componentFile": "",
+      "hidden": false,
+      "isImported": false,
+      "status": "Deprecated"
+    },
+    {
+      "makeswiftLabel": "Hero / Blog Hero",
+      "componentName": "BlogHero",
+      "type": "cast-blog-hero",
+      "registerFile": "core/lib/makeswift/components/cast/BlogHero.register.ts",
+      "componentFile": "",
+      "hidden": false,
+      "isImported": false,
+      "status": "Deprecated"
+    },
+    {
+      "makeswiftLabel": "Hero / Rotating Text Hero",
+      "componentName": "RotatingTextHero",
+      "type": "cast-rotating-text-hero",
+      "registerFile": "core/lib/makeswift/components/cast/RotatingTextHero.register.ts",
+      "componentFile": "",
+      "hidden": false,
+      "isImported": false,
+      "status": "Deprecated"
+    },
+    {
+      "makeswiftLabel": "Hero / Search Result Hero",
+      "componentName": "SearchResultHero",
+      "type": "cast-search-result-hero",
+      "registerFile": "core/lib/makeswift/components/cast/SearchResultHero.register.ts",
+      "componentFile": "core/lib/makeswift/components/cast/SearchResultHero.tsx",
+      "hidden": false,
+      "isImported": false,
+      "status": "Deprecated"
+    },
+    {
+      "makeswiftLabel": "Hero / Shop Hero",
+      "componentName": "ShopHero",
+      "type": "site-shop-hero",
+      "registerFile": "core/lib/makeswift/components/cast/ShopHero.register.ts",
+      "componentFile": "",
+      "hidden": false,
+      "isImported": false,
+      "status": "Deprecated"
+    },
+    {
+      "makeswiftLabel": "Hero / Signup Hero",
+      "componentName": "SignupHero",
+      "type": "site-signup-hero",
+      "registerFile": "core/lib/makeswift/components/cast/SignupHero.register.ts",
+      "componentFile": "",
+      "hidden": false,
+      "isImported": false,
+      "status": "Deprecated"
+    },
+    {
+      "makeswiftLabel": "Hero / Sub Page Hero (Carousel)",
+      "componentName": "SubPageHero",
+      "type": "cast-subpage-hero",
+      "registerFile": "core/lib/makeswift/components/cast/SubPageHero.register.ts",
+      "componentFile": "",
+      "hidden": false,
+      "isImported": false,
+      "status": "Deprecated"
+    },
+    {
+      "makeswiftLabel": "Hero / Sub Page Hero (Static)",
+      "componentName": "SubPageHeroStatic",
+      "type": "cast-subpage-hero-static",
+      "registerFile": "core/lib/makeswift/components/cast/SubPageHeroStatic.register.ts",
+      "componentFile": "",
+      "hidden": false,
+      "isImported": false,
+      "status": "Deprecated"
+    },
+    {
+      "makeswiftLabel": "Layouts / Section",
+      "componentName": "SectionLayout",
+      "type": "layouts-section",
+      "registerFile": "core/lib/makeswift/components/section/register.ts",
+      "componentFile": "",
+      "hidden": false,
+      "isImported": false,
+      "status": "Deprecated"
+    },
+    {
+      "makeswiftLabel": "MakeswiftSiteTheme (private)",
+      "componentName": "MakeswiftSiteTheme",
+      "type": "catalyst-makeswift-theme-provider",
+      "registerFile": "core/lib/makeswift/components/site-theme/register.ts",
+      "componentFile": "core/lib/makeswift/components/site-theme/client.tsx",
+      "hidden": true,
+      "isImported": false,
+      "status": "Hidden"
+    },
+    {
+      "makeswiftLabel": "Site Footer",
+      "componentName": "MakeswiftFooter",
+      "type": "catalyst-makeswift-footer",
+      "registerFile": "core/lib/makeswift/components/site-footer/register.ts",
+      "componentFile": "core/lib/makeswift/components/site-footer/client.tsx",
+      "hidden": true,
+      "isImported": false,
+      "status": "Hidden"
+    },
+    {
+      "makeswiftLabel": "Site Header",
+      "componentName": "MakeswiftHeader",
+      "type": "catalyst-makeswift-header",
+      "registerFile": "core/lib/makeswift/components/site-header/register.ts",
+      "componentFile": "core/lib/makeswift/components/site-header/client.tsx",
+      "hidden": true,
+      "isImported": false,
+      "status": "Hidden"
+    }
+  ]
+}

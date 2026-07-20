@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import BugForm from './components/BugForm.jsx';
 import StatusBoard from './components/StatusBoard.jsx';
+import ComponentsBoard from './components/ComponentsBoard.jsx';
 
 export default function App() {
   const [tab, setTab] = useState('submit');
@@ -25,10 +26,15 @@ export default function App() {
           className={`tab ${tab === 'features' ? 'active' : ''}`}
           onClick={() => setTab('features')}
         >Feature Status Board</button>
+        <button
+          className={`tab ${tab === 'components' ? 'active' : ''}`}
+          onClick={() => setTab('components')}
+        >Components</button>
       </nav>
       {tab === 'submit' && <BugForm />}
       {tab === 'board' && <StatusBoard typeFilter="bug" />}
       {tab === 'features' && <StatusBoard typeFilter="feature" />}
+      {tab === 'components' && <ComponentsBoard />}
     </div>
   );
 }
