@@ -1,4 +1,5 @@
 import express from 'express';
+import helmet from 'helmet';
 import multer from 'multer';
 import fetch from 'node-fetch';
 import fs from 'fs';
@@ -9,6 +10,13 @@ import { scanFromGithub } from './scripts/github-scanner.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
+// SECURITY: Aikido High #12 flagged missing security response headers. Helmet
+// sets X-Content-Type-Options, X-Frame-Options, Strict-Transport-Security,
+// Cross-Origin-Resource-Policy, Referrer-Policy, and others with sensible
+// defaults. CSP is disabled here because the bundled Vite React app uses
+// inline styles from styled components; if we later tighten CSP, keep the
+// rest of Helmet on.
+app.use(helmet({ contentSecurityPolicy: false }));
 // Airtable's uploadAttachment endpoint accepts up to 5 MB per file when base64-encoded.
 // Cap multer at 5 MB so we fail fast instead of building a payload Airtable will reject.
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 5 * 1024 * 1024 } });
